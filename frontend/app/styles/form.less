@@ -1,0 +1,86 @@
+@import 'variaveis.less';
+
+.glyphicon + span {
+	margin-left: 8px;
+}
+
+input.form-control,
+select.form-control,
+textarea.form-control {
+	border-radius: @default-border-radius;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	// -webkit-appearance: none;
+}
+
+input.search {
+	border: none;
+	width: 90%;
+
+	&:focus {
+		outline: none;
+	}
+
+}
+
+.form-control:focus {
+	border: 2px solid @primary-color;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.has-error .form-control{
+	&:focus {
+		box-shadow: none;
+		-webkit-box-shadow: none;
+	}
+}
+
+textarea {
+	resize: vertical;
+}
+
+a[ng-click] {
+	cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+   .font-thin;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   .font-thin; 
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   .font-thin;
+}
+
+:-ms-input-placeholder {  
+   .font-thin;
+}
+
+.help-block {
+	color: @vermelho;
+}
+
+.has-error {
+	
+	.help-block {
+
+		font-size: 13px;
+		color: @vermelho;
+	}
+
+	.form-control {
+
+		border-color: @vermelho;
+	}
+
+	.form-control:focus {
+
+		box-shadow: none;
+		-webkit-box-shadow: none;
+	}
+
+}

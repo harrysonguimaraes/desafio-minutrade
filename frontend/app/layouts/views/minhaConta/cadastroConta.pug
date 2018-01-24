@@ -1,0 +1,42 @@
+div.row
+	div.col-sm-12
+		h3.titulo-principal-pagina.hidden-xs
+			span(ng-show="!cadastroConta.isEdicao") Novo Cadastro
+			span(ng-show="cadastroConta.isEdicao") Edição de cadastro
+
+div.row
+	div.col-md-12
+		div.card
+			.card-title
+				h4(ng-show="!cadastroConta.isEdicao") Dados da pessoa
+				h4(ng-show="cadastroConta.isEdicao") Dados da pessoa {{cadastroConta.dadosUsuario.nome}}
+			.card-body
+				form(name="formCadastroUsuario", novalidate)
+					div.row
+						div.col-md-6
+							.form-group(show-errors)
+								
+								label(for="nomeColaborador") Nome
+								input.form-control#nome(type="text", name="nome", ng-model="cadastroConta.dadosUsuario.nome" , required, maxLength="150")
+								mensagem-erro(campo="formCadastroUsuario.nome")
+
+						div.col-md-6
+							.form-group(show-errors)
+
+								label(for="email") Email
+								input.form-control#email(type="email", name="email", ng-model="cadastroConta.dadosUsuario.email", required, maxLength="80")
+								mensagem-erro(campo="formCadastroUsuario.email")
+
+					div.row
+						div.col-md-12
+							.form-group(show-errors)
+								
+								label(for="endereco") Endereço
+								input.form-control#endereco(type="text", name="endereco", ng-model="cadastroConta.dadosUsuario.endereco", required, maxLength="200")
+								mensagem-erro(campo="formCadastroUsuario.endereco")
+
+					div.row
+						div.col-md-12.text-right
+							button-clean(formulario="formCadastroUsuario") Limpar campos
+							button-save(type="button", callback="cadastroConta.salvarUsuario()", formulario="formCadastroUsuario") Salvar
+

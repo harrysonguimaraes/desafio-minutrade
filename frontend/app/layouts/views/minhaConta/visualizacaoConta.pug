@@ -1,0 +1,28 @@
+div.row
+	div.col-sm-12
+		h3.titulo-principal-pagina.hidden-xs Minha conta
+
+div.row(ng-show="visualizacaoConta.dadosUsuario")
+	div.col-md-8.col-sm-12.col-lg-9
+		div.card
+			.card-title
+				h4 Dados do usuário
+			.card-body
+				span Nome
+				p {{visualizacaoConta.dadosUsuario.nome}}
+
+				span Endereço
+				p {{visualizacaoConta.dadosUsuario.endereco}}
+
+				span Email
+				p {{visualizacaoConta.dadosUsuario.email}}
+
+				
+	div.col-md-4.col-sm-12.col-lg-3
+		a.btn.btn-second.pull-right(href="#/minhaConta/cadastro/isEdicao")
+			span.fa.fa-edit
+			span  Alterar dados
+
+div.row(ng-show="!visualizacaoConta.dadosUsuario")
+	p.empty-result
+		a(href="#/minhaConta/cadastro") Crie agora sua conta e ganhe um cupom de desconto para sua primeira compra.

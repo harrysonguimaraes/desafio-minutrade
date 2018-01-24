@@ -1,0 +1,129 @@
+@import 'variaveis.less';
+
+
+a {
+	color: @primary-color;
+
+	&:hover {
+		color: @primary-color;
+	}
+}
+
+.btn {
+	outline: 0;
+	text-transform: uppercase;
+	padding: 8px 22px;
+	font-weight: 500;
+	height: 36px;
+	border: none;
+	box-sizing: border-box;
+	border-radius: @default-border-radius;
+	box-shadow: @default-shadow;
+	margin-bottom: 10px;
+
+	i + span,
+	span + i{
+		margin-left: 6px;
+	}
+
+	i.fa-close {
+		font-size: 18px;
+	}
+
+	&:active {
+		box-shadow: none;
+		-webkit-box-shadow: none;
+		outline: 0;
+	}
+
+	&:focus {
+		outline: 0;
+	}
+
+	&:active:focus {
+		outline: 0;
+	}
+
+	& + & ,
+	& + .btn-icon,
+	.btn-icon + & {
+		margin-left: 24px;
+	}
+
+}
+
+.btn-icon {
+
+	font-size: 22px;
+	color: @cor-fonte-default;
+	border:none;
+	background-color: transparent;
+	vertical-align: middle;
+	margin-bottom: 8px;
+
+	& + & {
+		margin-left: 12px; 
+	}
+	
+	&:hover,
+	&.active,
+	&:focus {
+		cursor: pointer;
+		text-decoration: none;
+		color: @primary-color;
+		outline: 0;
+	}
+}
+
+.btn-primary {
+	background-color: @primary-color; 
+
+	&:hover, &:focus, &:active, &:active:hover {
+		background-color: @primary-color;
+		box-shadow: @default-shadow-hover;
+		transition: 0.3s;
+
+
+	}
+
+	&:active:focus {
+		border: none;
+		border-top: 3px solid @primary-color-highlight;
+	}
+}
+
+.btn-second {
+	background-color: @second-color; 
+	color: @branco;
+
+	&:hover, &:focus, &:active, &:active:hover {
+		color: @branco;
+		background-color: @second-color;
+		box-shadow: @default-shadow-hover;
+		transition: 0.3s;
+
+	}
+
+	&:active:focus {
+		color: @branco;
+		border: none;
+		border-top: 3px solid @second-color-dark;
+	}
+}
+
+.btn-default {
+	background-color: @branco; 
+	color: @preto-claro;
+	border: none;
+	box-shadow: none;
+
+	&:hover, &:focus, &:active, &:active:hover {
+		color: @cor-fonte-default;
+		background-color: @branco;
+	}
+
+	&:active:focus {
+		color: @cor-fonte-default;
+		border: none;
+	}
+}

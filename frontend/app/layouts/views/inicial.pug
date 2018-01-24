@@ -1,0 +1,99 @@
+div.row
+	div.col-sm-2.col-md-3
+		h3.titulo-principal-pagina.hidden-xs Página inicial
+
+	div.col-xs-12.col-sm-10.col-md-9.text-right
+		button.fa.fa-th-large.btn-icon(ng-class="{active: !inicial.exibicaoLista}", ng-click="inicial.exibicaoLista = !inicial.exibicaoLista", data-toggle="tooltip", title="Exibição em quadros", ng-show="inicial.maisVendidos.length > 0 || inicial.lancamentos.length > 0")
+		button.fa.fa-list-ul.btn-icon(ng-class="{active: inicial.exibicaoLista}", ng-click="inicial.exibicaoLista = !inicial.exibicaoLista", data-toggle="tooltip", title="Exibição em lista", ng-show="inicial.maisVendidos.length > 0 || inicial.lancamentos.length > 0")
+
+		a.btn.btn-primary(href="#/carrinho")  
+			span.fa.fa-cart-plus
+			span  Meu carrinho
+
+div.row(ng-show="inicial.maisVendidos.length > 1 || inicial.lancamentos.length > 1")
+	div.col-md-12
+		div.card.card-simple
+			form(name="filtroForm", novalidate)
+				label.fa.fa-search(for="filtroLivros") 
+				input.search#filtroLivros(name="filtroLivros", type="text", placeholder="Filtre por nome do livro", ng-model="inicial.filtro.nome")
+
+div.row(ng-show="!inicial.exibicaoLista")
+	
+	div.col-md-12(ng-hide="(inicial.maisVendidos | filter:inicial.filtro:strict).length == 0 && inicial.maisVendidos.length > 0")
+
+		h3.titulo-principal-pagina.hidden-xs Mais vendidos
+	
+	div.col-md-4.col-sm-6.col-lg-3(ng-repeat="livro in inicial.maisVendidos | filter:inicial.filtro:strict")
+		div.card.card-md
+			.card-title
+				h4 {{livro.nome}}
+			.card-body
+				img(ng-src="app/images/{{livro.filename}}", alt="")
+				span Descrição
+				p {{livro.descricao.minimizarTexto(70)}}
+
+				span  ISBN
+				p {{livro.ISBN}}
+
+				span  Preço
+				p R$ {{livro.valor.formatarNumero(2)}}
+
+				div.botoes-card.dois-botoes
+					button.fa.fa-eye.btn-icon(data-toggle="tooltip", title="Visualizar detalhes", ng-click="inicial.visualizarLivro(livro.ISBN)")
+					button.fa.fa-cart-plus.btn-icon(data-toggle="tooltip", title="Comprar", ng-click="inicial.adicionarAoCarrinho(livro)")
+
+	div.col-md-12(ng-hide="(inicial.lancamentos | filter:inicial.filtro:strict).length == 0 && inicial.lancamentos.length > 0")
+		h3.titulo-principal-pagina.hidden-xs Lançamentos
+	
+	div.col-md-4.col-sm-6.col-lg-3(ng-repeat="livro in inicial.lancamentos | filter:inicial.filtro:strict")
+		div.card.card-md
+			.card-title
+				h4 {{livro.nome}}
+			.card-body
+				img(ng-src="app/images/{{livro.filename}}", alt="")
+				span Descrição
+				p {{livro.descricao.minimizarTexto(70)}}
+
+				span  ISBN
+				p {{livro.ISBN}}
+
+				span  Preço
+				p R$ {{livro.valor.formatarNumero(2)}}
+
+				div.botoes-card.dois-botoes
+					button.fa.fa-eye.btn-icon(data-toggle="tooltip", title="Visualizar detalhes", ng-click="inicial.visualizarLivro(livro.ISBN)")
+					button.fa.fa-cart-plus.btn-icon(data-toggle="tooltip", title="Comprar", ng-click="inicial.adicionarAoCarrinho(livro)")
+
+div.row(ng-show="inicial.exibicaoLista")
+	
+	div.col-sm-12(ng-hide="(inicial.maisVendidos | filter:inicial.filtro:strict).length == 0 && inicial.maisVendidos.length > 0")
+		h3.titulo-principal-pagina.hidden-xs Mais vendidos
+
+	div.col-md-12
+		div.card.list(ng-repeat="livro in inicial.maisVendidos | filter:inicial.filtro:strict")
+			label {{livro.nome}}
+			span.font-thin {{livro.descricao.minimizarTexto(70)}}
+			label R$ {{livro.valor.formatarNumero(2)}}
+
+			div.botoes-card.dois-botoes
+				button.fa.fa-eye.btn-icon(data-toggle="tooltip", title="Visualizar detalhes", ng-click="inicial.visualizarLivro(livro.ISBN)")
+				button.fa.fa-cart-plus.btn-icon(data-toggle="tooltip", title="Comprar", ng-click="inicial.adicionarAoCarrinho(livro)")
+
+	div.col-sm-12(ng-hide="(inicial.lancamentos | filter:inicial.filtro:strict).length == 0 && inicial.lancamentos.length > 0")
+		h3.titulo-principal-pagina.hidden-xs Lançamentos
+
+	div.col-md-12
+		div.card.list(ng-repeat="livro in inicial.lancamentos | filter:inicial.filtro:strict")
+			label {{livro.nome}}
+			span.font-thin {{livro.descricao.minimizarTexto(70)}}
+			label R$ {{livro.valor.formatarNumero(2)}}
+
+			div.botoes-card.dois-botoes
+				button.fa.fa-eye.btn-icon(data-toggle="tooltip", title="Visualizar detalhes", ng-click="inicial.visualizarLivro(livro.ISBN)")
+				button.fa.fa-cart-plus.btn-icon(data-toggle="tooltip", title="Comprar", ng-click="inicial.adicionarAoCarrinho(livro)")
+
+div.row(ng-show="(inicial.maisVendidos | filter:inicial.filtro:strict).length == 0 && (inicial.lancamentos | filter:inicial.filtro:strict).length == 0")
+	div.col-md-8.col-md-offset-2
+		p.empty-result
+			| Oops! Nenhum resultado encontrado para o filtro aplicado. 
+			a(ng-click="inicial.resetFiltro()") Aplique um filtro diferente.

@@ -1,0 +1,23 @@
+div.row
+	div.col-sm-12
+		h3.titulo-principal-pagina.hidden-xs {{visualizacaoLivros.livroVisualizado.nome}}
+
+div.row
+	div.col-md-8.col-sm-12.col-lg-9
+		div.card
+			.card-title
+				h4 {{visualizacaoLivros.livroVisualizado.nome}}
+			.card-body
+				img(ng-src="app/images/{{visualizacaoLivros.livroVisualizado.filename}}", alt="")
+				span Descrição
+				p {{visualizacaoLivros.livroVisualizado.descricao}}
+
+				span  ISBN
+				p {{visualizacaoLivros.livroVisualizado.ISBN}}
+
+				span  Valor
+				p R$ {{visualizacaoLivros.livroVisualizado.valor.formatarNumero(2)}}
+	div.col-md-4.col-sm-12.col-lg-3
+		button.btn.btn-second.pull-right(ng-click="visualizacaoLivros.adicionarAoCarrinho(visualizacaoLivros.livroVisualizado)")
+			span.fa.fa-cart-plus
+			span  Comprar livro

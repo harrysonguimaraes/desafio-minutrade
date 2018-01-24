@@ -1,0 +1,125 @@
+@import 'variaveis.less';
+
+header {
+	background-color: @primary-color;
+	color: @branco;
+	height: 110px;
+	padding-top: 23px;
+	margin-bottom: 18px;
+	box-shadow: @default-shadow;
+
+	&.affix {
+		height: 42px;
+	    z-index: 1;
+    	width: 100%;
+    	opacity: 0.96;
+    	margin-bottom: 140px;
+
+    	padding-top: 0;
+		height: 42px;
+
+		ul {
+			padding-top: 12px;
+		}
+
+		li {
+			padding-right: 10px;
+		}
+	
+		.hidden-affixed {
+			display: none;
+		}
+	}
+
+	h1 {
+		margin: 0;
+		padding: 0;
+	}
+
+	ul {
+		padding-left: 0;
+		padding-top: 19px;
+	}
+
+	li {
+		display: inline-block;
+		padding-right: 28px;
+
+		a {
+			color: @branco;
+			opacity: 0.65;
+			font-size: 14px;
+			font-weight: 500;
+			transition: opacity linear 0.2s;
+
+			&:hover, &:active, &:focus {
+				opacity: 1;
+				color: @branco;
+				text-decoration: none;
+				border-bottom: 3px solid @branco;
+				padding-bottom: 8px;
+				transition: opacity linear 0.2s;
+			}
+		}
+
+		&.active a {
+			padding-bottom: 8px;
+			border-bottom: 3px solid @branco;
+			opacity: 1;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+	}
+
+	#info-user-logado {
+
+		div {
+			float: right;
+			padding-left: 20px;
+		}
+
+		span {
+			line-height: 0;
+			display: inline-block;
+
+		}
+
+		i {
+			color: @branco;
+			font-size: 26px;
+			margin-top: 12px;
+		}
+
+		#nome-user-logado {
+			font-size: 15px;
+			margin-top: 16px;
+		}
+
+		#perfil-user-logado {
+			font-size: 13px;
+		}
+	}
+
+}
+
+header.affix + div + div {
+	padding-top: 130px;
+}
+
+header.affix + div.alert {
+	margin-top: 60px;
+}
+
+@media screen and (max-width: 767px) {
+	header {
+		padding-top: 0;
+		height: 49px;
+
+		li {
+			padding-right: 10px;
+		}
+	}
+}

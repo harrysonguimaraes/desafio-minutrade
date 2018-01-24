@@ -1,0 +1,16 @@
+div.help-block(ng-messages="campo.$error", ng-if="campo.$touched || campo.$$parentForm.$submitted")
+
+	span(ng-message="required") {{required || 'Campo obrigatório.'}}
+	span(ng-message="minlength") Digite mais que {{minLengthSize}} caractere(s) para esse campo.
+	span(ng-message="email") Email inválido.
+	span(ng-message="cpf") CPF inválido.
+	span(ng-message="cnpj") CNPJ inválido.
+	span(ng-message="min") Valor abaixo do permitido.
+	span(ng-message="max") Valor acima do permitido.
+	span(ng-message="brPhoneNumber") Telefone inválido.
+	span(ng-message="dataPassada") A data inserida deve ser futura.
+	span(ng-message="duracaoExcedida") A duração máxima do transporte é de 72 horas.
+	span(ng-message="datasInvertidas") A data inicial é maior que a data final.
+	span(ng-message="maxDate") {{maxDate ? 'A data não pode ser maior que ' + maxDate : 'A data não pode ser futura.'}}
+	span(ng-message="minDate") {{minDate ? 'A data não pode ser menor que ' + minDate : 'A data não pode ser menor que hoje.'}}
+	span(ng-message="qtdeAcimaDisponivel") A quantidade está acima da disponível.

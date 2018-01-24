@@ -1,0 +1,46 @@
+/*===========================================*/
+/*Animações entre as transições de um ng-view*/
+/*===========================================*/
+
+
+/*Início da animação de entrar*/
+.view-slide-in.ng-enter {
+  transition: all 0.4s ease;
+  -webkit-transition:all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+
+  transition-delay: 0.2s;
+  -webkit-transition-delay: 0.2s;
+  
+  opacity:0;
+  position:relative;
+  // left:20px;
+  transform: scale(1.03);
+}
+
+/*Fim da animação de entrar*/
+.view-slide-in.ng-enter.ng-enter-active {
+  // left:0;
+  transform: scale(1);
+  opacity: 1;
+}
+
+/*Início da animação de saída*/
+.view-slide-in.ng-leave{
+  transition: all 0.2s ease;
+  -webkit-transition:all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+
+  opacity:0.5;
+  position:relative;
+  // left:0;
+}
+
+/*Fim da animação de saída*/
+.view-slide-in.ng-leave.ng-leave-active{
+  opacity:0;
+  // left: -20px;
+  transform: scale(0.96);
+}

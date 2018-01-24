@@ -1,0 +1,31 @@
+{
+  "name": "desafio-minutrade",
+  "version": "1.0.0",
+  "description": "App do desafio Minutrade",
+  "author": "Harryson C. Guimarães",
+  "devDependencies": {
+    "autoprefixer": "^7.2.3",
+    "cssmin": "^0.4.3",
+    "cssnano": "^3.10.0",
+    "grunt": "^1.0.1",
+    "grunt-cli": "1.2.0",
+    "grunt-contrib-clean": "1.0.0",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-cssmin": "1.0.2",
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-contrib-less": "1.4.0",
+    "grunt-contrib-pug": "1.0.0",
+    "grunt-contrib-uglify": "2.0.0",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-include-source": "1.0.0",
+    "grunt-ng-annotate": "2.0.2",
+    "grunt-notify": "0.4.5",
+    "grunt-postcss": "^0.9.0",
+    "grunt-shell": "^2.1.0",
+    "grunt-usemin": "3.1.1",
+    "jshint-stylish": "2.2.1",
+    "load-grunt-tasks": "3.5.2",
+    "time-grunt": "1.4.0"
+  }
+}

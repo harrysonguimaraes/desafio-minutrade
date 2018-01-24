@@ -1,0 +1,52 @@
+@import 'variaveis.less';
+
+@font-face {
+	font-family: Gotham;
+	src: url('../app/fonts/Gotham-Rounded-Medium_21022.ttf');
+}
+
+@font-face {
+	font-family: Gotham-Light;
+	src: url('../app/fonts/GOTHAM-LIGHT.TTF');
+	font-weight: lighter;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+
+	display: none !important;
+}
+
+body {
+	background-color: @background-geral;
+	color: @cor-fonte-default;
+	font-size: 16px;
+	font-family: 'Gotham', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+	.font-thin;
+}
+
+p.empty-result {
+	text-align: center;
+	margin: 80px 0;
+	font-size: 25px;
+	color: @cor-fonte-default;
+	font-weight: 500;
+	font-style: italic;
+}
+
+h3.titulo-principal-pagina {
+	margin-top: 6px;
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+
+footer {
+	margin-top: 40px;
+}

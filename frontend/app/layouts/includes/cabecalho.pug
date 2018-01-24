@@ -1,0 +1,29 @@
+//- Para adicionar um novo item no menu, adicione uma nova entrada no arquivo utils/itensMenu.js 
+//- e em cada controller, adicione a chave menu. Ex na controller Inicial: Inicial.menu = app.utils.itensMenu.INICIO; 
+header(data-spy="affix" data-offset-top="70")
+	.container
+
+		div.row
+			div.col-sm-8.col-md-6
+				h1.hidden-xs.hidden-affixed LIVRARIA MINUTRADE
+
+				ul
+					li(ng-class="{active: menu === itensMenu.INICIO}")
+						a(href="#/") INÍCIO
+
+					li(ng-class="{active: menu === itensMenu.LIVROS}")
+						a(href="#/livros") LIVROS
+						
+					li(ng-class="{active: menu === itensMenu.CARRINHO}")
+						a(href="#/carrinho") CARRINHO
+						
+					li(ng-class="{active: menu === itensMenu.MINHA_CONTA}")
+						a(href="#/minhaConta") MINTA CONTA
+						
+
+			div.col-sm-4.col-md-6#info-user-logado.hidden-affixed
+				
+				div.text-right.hidden-xs
+					span#nome-user-logado Olá, {{usuarioLogado ? usuarioLogado.nome : 'Visitante'}}
+					br
+					span#perfil-user-logado.font-thin Seja bem-vindo

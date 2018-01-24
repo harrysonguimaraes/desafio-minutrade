@@ -1,0 +1,46 @@
+div.row
+	div.col-sm-12
+		h3.titulo-principal-pagina.hidden-xs Meu carrinho
+
+div.row
+	div.col-md-4.col-sm-6.col-lg-3(ng-repeat="livro in listagemCarrinho.livros")
+		div.card.card-md
+			.card-title
+				h4 {{livro.nome}}
+			.card-body
+				img(ng-src="app/images/{{livro.filename}}", alt="")
+				span Descrição
+				p {{livro.descricao.minimizarTexto(70)}}
+
+				span  ISBN
+				p {{livro.ISBN}}
+
+				span  Preço
+				p R$ {{livro.valor.formatarNumero(2)}}
+
+
+				div.botoes-card.dois-botoes
+					button.fa.fa-close.btn-icon(data-toggle="tooltip", title="Remover do carrinho", ng-click="listagemCarrinho.removerDoCarrinho(livro)")
+					button.fa.fa-check.btn-icon(data-toggle="tooltip", title="Finalizar compra", ng-click="listagemCarrinho.finalizarCompra()")
+
+div.row
+	div.col-sm-12(ng-show="listagemCarrinho.livros.length > 0")
+		div.card.card-simple
+			table.table
+				thead
+					th Livro
+					th ISBN
+					th.text-right Valor
+				tbody
+					tr(ng-repeat="livro in listagemCarrinho.livros")
+						td {{livro.nome}}
+						td {{livro.ISBN}}
+						td.text-right R$ {{livro.valor.formatarNumero(2)}}
+					tr
+						td: strong Total:
+						td
+						td.text-right: strong R$ {{listagemCarrinho.getValorTotalCompra().formatarNumero(2)}}
+
+	p.empty-result(ng-show="listagemCarrinho.livros.length == 0")
+		| Nenhum livro adicionado ao carrinho até o momento.
+		a(href="#/"): strong Navegue pelos livros mais vendidos e nossos lançamentos e faça sua compra.
