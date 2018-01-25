@@ -17,7 +17,9 @@ livraria.config(function ($routeProvider, $locationProvider) {
 });
 
 
-livraria.run(function($rootScope, minhaContaService) {
+livraria.run(function($rootScope, minhaContaService, facebookService) {
+
+	facebookService.init();
 
 	$rootScope.itensMenu = app.utils.itensMenu; 
 
@@ -32,6 +34,8 @@ livraria.run(function($rootScope, minhaContaService) {
 	});
 
 });
+
+livraria.controller('cabecalho', app.controllers.Cabecalho);
 
 //services
 utils.services(livraria, app.services);

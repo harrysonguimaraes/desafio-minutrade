@@ -1,6 +1,6 @@
 //- Para adicionar um novo item no menu, adicione uma nova entrada no arquivo utils/itensMenu.js 
 //- e em cada controller, adicione a chave menu. Ex na controller Inicial: Inicial.menu = app.utils.itensMenu.INICIO; 
-header(data-spy="affix" data-offset-top="70")
+header(data-spy="affix" data-offset-top="70", ng-controller="cabecalho as cabecalho")
 	.container
 
 		div.row
@@ -26,4 +26,5 @@ header(data-spy="affix" data-offset-top="70")
 				div.text-right.hidden-xs
 					span#nome-user-logado Olá, {{usuarioLogado ? usuarioLogado.nome : 'Visitante'}}
 					br
-					span#perfil-user-logado.font-thin Seja bem-vindo
+					span#info-user-logado.font-thin 
+						a(ng-show="!cabecalho.isLogged()", ng-click="cabecalho.login()") Logar com Facebook

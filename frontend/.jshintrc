@@ -17,7 +17,8 @@
   "globals": {
 	   "angular" : false,
      "$": false,
-	   "app": true
+	   "app": true,
+     "FB": true
   },
 
   "node" : true,
