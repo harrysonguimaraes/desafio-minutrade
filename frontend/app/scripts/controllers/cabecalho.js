@@ -1,28 +1,41 @@
-var Cabecalho = function (facebookService) {
+var Cabecalho = function (facebookService, minhaContaService, alertaUtils) {
 
     var cabecalho = this;
 
     cabecalho.login = function() {
 
-    	facebookService.login(function(response) {
+    	facebookService.getStatus(function(response) {
     		
     		console.log(response);
     		if (response.status === 'connected') {
+
+                alertaUtils.showMensagem('Login realizado com sucesso', 'success');
 					
 				facebookService.getInfoLoggedUser(function(response) {
 	    			console.log(response);
+                    minhaContaService.setUsuarioLogado(response);
 				});
-			}
+			} else {
+                facebookService.login();
+            }
 
     	});
 
     };
 
-    cabecalho.getDadosusuarioLogado = function() {
+    cabecalho.logout = function() {
 
-    	facebookService.getInfoLoggedUser(function(response) {
-	    	console.log(response);
-		});
+        facebookService.getStatus(function(response) {
+            
+            if (response.status === 'connected') {
+                    
+                facebookService.logout(function() {
+                    alertaUtils.showMensagem('Logout realizado com sucesso', 'success');
+                    minhaContaService.removeLoggedUser();
+                });
+            }
+
+        });
     };
 
 };

@@ -26,9 +26,18 @@ var FacebookService = function() {
 		};
 	};
 
-	facebookService.login = function(successCallBack, errorCallback) {
+	facebookService.getStatus = function(successCallBack, errorCallback) {
 
 		FB.getLoginStatus(successCallBack, errorCallback);
+	};
+
+	facebookService.login = function() {
+		FB.login();
+	};
+
+	facebookService.logout = function(successCallBack) {
+
+		FB.logout(successCallBack);
 	};
 
 	facebookService.getInfoLoggedUser = function(successCallBack, errorCallback) {

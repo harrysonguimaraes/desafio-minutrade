@@ -24,7 +24,9 @@ header(data-spy="affix" data-offset-top="70", ng-controller="cabecalho as cabeca
 			div.col-sm-4.col-md-6#info-user-logado.hidden-affixed
 				
 				div.text-right.hidden-xs
-					span#nome-user-logado Olá, {{usuarioLogado ? usuarioLogado.nome : 'Visitante'}}
+					span#nome-user-logado Olá, {{usuarioLogado ? usuarioLogado.name : 'Visitante'}}
 					br
 					span#info-user-logado.font-thin 
-						a(ng-show="!cabecalho.isLogged()", ng-click="cabecalho.login()") Logar com Facebook
+						a(ng-show="!usuarioLogado", ng-click="cabecalho.login()") Logar com Facebook
+						a(ng-show="usuarioLogado", ng-click="cabecalho.logout()") Logout
+							span.fa.fa-sign-out

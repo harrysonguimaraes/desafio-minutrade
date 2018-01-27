@@ -13,6 +13,10 @@ var MinhaContaService = function($location, $rootScope) {
 		localStorage.setItem('dadosUsuario', JSON.stringify(usuario));
 		$rootScope.dadosUsuario = usuario;
 	};
+
+	minhaContaService.removeLoggedUser = function() {
+		localStorage.removeItem('dadosUsuario');
+	};
 	
 };
 
