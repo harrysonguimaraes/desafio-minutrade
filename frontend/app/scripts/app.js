@@ -39,6 +39,3 @@ livraria.controller('cabecalho', app.controllers.Cabecalho);
 
 //services
 utils.services(livraria, app.services);
-
-//directives
-utils.directives(livraria, app.directives);

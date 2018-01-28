@@ -289,12 +289,12 @@ module.exports = function(grunt){
 				]
 
 			},
-			test: {
+			prod: {
 				options: {
 					banner: '!function(exports) {\n/* @ngInject */\n',
-					footer: '\n}(function() { this.app = this.app || {controllers:{}, directives:{}, services:{}, utils:{}}; return this.app;}());',
+					footer: '\n}(function() { this.app = this.app || {controllers:{}, services:{}, utils:{}}; return this.app;}());',
 					mangle: false,
-					beautify: true,
+					beautify: false,
 					exportAll: true
 				},
 				files : [

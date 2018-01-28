@@ -31,8 +31,8 @@ var FacebookService = function() {
 		FB.getLoginStatus(successCallBack, errorCallback);
 	};
 
-	facebookService.login = function() {
-		FB.login();
+	facebookService.login = function(successCallBack) {
+		FB.login(successCallBack);
 	};
 
 	facebookService.logout = function(successCallBack) {
