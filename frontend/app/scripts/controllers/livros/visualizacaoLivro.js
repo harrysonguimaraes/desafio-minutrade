@@ -1,4 +1,4 @@
-var VisualizacaoLivros = function($routeParams, livrosService) {
+var VisualizacaoLivros = function($routeParams, livrosService, alertaUtils, $location) {
 
 	var visualizacaoLivros = this;
 
@@ -7,6 +7,21 @@ var VisualizacaoLivros = function($routeParams, livrosService) {
 	visualizacaoLivros.adicionarAoCarrinho = function(livro) {
 
 		livrosService.adicionarAoCarrinho(livro);
+	};
+
+	visualizacaoLivros.compartilhar = function() {
+
+		FB.ui({
+		  method: 'share',
+		  href: $location.absUrl(),
+		
+		}, function(response){
+			
+			if (response && !response.error_message) {
+	
+				alertaUtils.showMensagem('Post compartilhado com sucesso', 'success');
+			}
+		});
 	};
 };
 

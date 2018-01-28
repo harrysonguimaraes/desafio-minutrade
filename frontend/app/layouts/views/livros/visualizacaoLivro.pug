@@ -18,6 +18,9 @@ div.row
 				span  Valor
 				p R$ {{visualizacaoLivros.livroVisualizado.valor.formatarNumero(2)}}
 	div.col-md-4.col-sm-12.col-lg-3
-		button.btn.btn-second.pull-right(ng-click="visualizacaoLivros.adicionarAoCarrinho(visualizacaoLivros.livroVisualizado)")
+		button.btn.btn-second.pull-right.btn-md(ng-click="visualizacaoLivros.adicionarAoCarrinho(visualizacaoLivros.livroVisualizado)")
 			span.fa.fa-cart-plus
 			span  Comprar livro
+		button.btn.btn-second.pull-right.btn-md(ng-click="visualizacaoLivros.compartilhar(visualizacaoLivros.livroVisualizado)")
+			span.fa.fa-share
+			span  Compartilhar
