@@ -1,8 +1,5 @@
 var livraria = angular.module('livraria', [
-	'ngRoute',
-	'ngMessages',
-	'ui.bootstrap.showErrors',
-	'ui.utils.masks']);
+	'ngRoute']);
 
 var utils = app.utils;
 

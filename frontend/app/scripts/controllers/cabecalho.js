@@ -2,40 +2,32 @@ var Cabecalho = function (facebookService, minhaContaService, alertaUtils, $wind
 
     var cabecalho = this;
 
+    function handleAfterUserLogin() {
+
+        alertaUtils.showMensagem('Login realizado com sucesso', 'success');
+                                             
+        facebookService.getInfoLoggedUser(function(response) {
+            minhaContaService.setUsuarioLogado(response);
+            $window.location.reload();
+        });
+    }
+
     cabecalho.login = function() {
 
     	facebookService.getStatus(function(response) {
     		
     		if (response.status === 'connected') {
-
                 alertaUtils.showMensagem('Login realizado com sucesso', 'success');
-				
-				facebookService.getInfoLoggedUser(function(response) {
-                    minhaContaService.setUsuarioLogado(response);
-                    $window.location.reload();
-				});
+				handleAfterUserLogin();
 			
             } else {
                 facebookService.login(function(response) {
-
                     if (response.status === 'connected') {
-                        console.log(response);
-                        alertaUtils.showMensagem('Login realizado com sucesso', 'success');
-                                             
-                        facebookService.getInfoLoggedUser(function(response) {
-                            
-                            console.log(response);
-
-                            minhaContaService.setUsuarioLogado(response);
-                            $window.location.reload();
-                        });
+                        handleAfterUserLogin();
                     }
-
                 });
             }
-
     	});
-
     };
 
     cabecalho.logout = function() {
@@ -49,10 +41,8 @@ var Cabecalho = function (facebookService, minhaContaService, alertaUtils, $wind
                     minhaContaService.removeLoggedUser();
                 });
             }
-
         });
     };
-
 };
 
 exports.controllers.Cabecalho = Cabecalho;

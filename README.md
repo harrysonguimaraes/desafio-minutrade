@@ -37,8 +37,6 @@ Feito isso, o site estará pronto para visualização na url: `localhost:8081`.
 
 A arquitetura de CSS foi criada pensando em componentes. Assim, existem componentes prontos para botões, cards, alertas, validação de formulários.
 
-Apesar de não termos usado, a arquitetura do site está pronta para ser acoplada a um backend, inclusive com um componente pronto para tratar requisições, com adição de loading automático entre as requests e responses e tratamento autómático para exibição de mensagem de erro em caso de falha numa requisição.
-
 Existem 3 diretivas úteis para validação de formulários, acopladas à forma de validação de forms do angularJS. São elas o button-clean, o button-save e o mensagem-erro.
 
 * button-clean: é um botão que recebe um form e reseta automaticamente todos os campos desse form ao ser clicado, apagando os valores inseridos nos campos e suas mensagens de erro, além de setar o formulário no seu estado 'limpo'. Pode-se passar um callback para essa diretiva, caso seja preciso fazer algo além de limpar o formulário, como por exemplo exibir uma mensagem de sucesso ao usuário. Esse callback é executado após a limpeza de todo o formulário.
