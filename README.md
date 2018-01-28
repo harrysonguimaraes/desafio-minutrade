@@ -56,4 +56,4 @@ Ao acessar uma página não existente, o usuário é direcionado para uma págin
 - [ ] Criar o backend da aplicação. Atualmente, os livros adicionados ao carrinho estão sendo "persistidos" apenas no localStorage do próprio browser.
 - [ ] Incluir otimizações de SEO (Search engine optimization), JSON-LD.
 - [ ] Acrescentar otimizações de performance, removendo bootstrap que foi adicionado para rápida prototipação.
-- [] Otimizar para navegação mobile
+- [ ] Otimizar para navegação mobile
