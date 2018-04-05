@@ -26,7 +26,7 @@ module.exports = function(grunt){
 			// Espera por mudanças nos arquivos .js e realiza as verificações e otimizações de javascript.
 			js: {
 				files: ['app/scripts/**/*.js'],
-				tasks: ['jshint:all', 'ngAnnotate:dev', 'uglify:dev', 'includeSource:dev'],
+				tasks: ['jshint:all', 'ngAnnotate:dev', 'babel:dist','uglify:dev', 'includeSource:dev'],
 				options: {
 					spawn: false,
 					livereload: true
@@ -145,7 +145,7 @@ module.exports = function(grunt){
 			dev: {
 				files: [
 					{
-						cwd: '<%= globalConfig.dev %>/js',
+						cwd: 'app/scripts',
 						src: ['**/*.js'],
 						dest: '<%= globalConfig.dev %>/js',
 						expand: true,
@@ -257,6 +257,7 @@ module.exports = function(grunt){
 			options: {
 				jshintrc: '.jshintrc',
 				reporter: require('jshint-stylish'),
+				esversion: 6,
 				ignores: [
 					'app/scripts/libs/**/*.js'
 				]
@@ -269,6 +270,23 @@ module.exports = function(grunt){
 			}
 		},
 
+		babel: {
+	        options: {
+	            'sourceMap': true,
+	            presets: ['env']
+	        },
+	        dev: {
+	            files: [{
+						
+					expand: true,
+                	cwd: '<%= globalConfig.dev %>/js',
+					src: ['**/*.js'],
+					dest: '<%= globalConfig.dev %>/js',
+					ext: '.js'
+	            }]
+	        }
+	    },
+
 		uglify:{
 			dev: {
 				options: {
@@ -278,9 +296,10 @@ module.exports = function(grunt){
 					beautify: true,
 					compress: false
 				},
+
 				files: [
 					{
-						cwd: 'app/scripts',
+						cwd: '<%= globalConfig.dev %>/js',
 						src: ['**/*.js'],
 						dest: '<%= globalConfig.dev %>/js',
 						expand: true,
@@ -297,11 +316,11 @@ module.exports = function(grunt){
 					beautify: false,
 					exportAll: true
 				},
-				files : [
+				files: [
 					{
-						cwd: 'app/scripts',
+						cwd: '<%= globalConfig.dev %>/js',
 						src: ['**/*.js'],
-						dest: '<%= globalConfig.dist %>/js',
+						dest: '<%= globalConfig.dev %>/js',
 						expand: true,
 						ext: '.js'
 					}
@@ -311,16 +330,16 @@ module.exports = function(grunt){
 		}
 	});
 
-	grunt.registerTask('default', ['jshint:all', 'clean:build', 'copy:dev' ,'pug:dev', 'uglify:dev', 'ngAnnotate:dev', 'less:dev', 'cssmin' ,'includeSource:dev',
+	grunt.registerTask('default', ['jshint:all', 'clean:build', 'copy:dev' , 'pug:dev', 'ngAnnotate:dev', 'uglify:dev', 'babel:dev', 'less:dev', 'cssmin' ,'includeSource:dev',
 		'notify:dev', 'postcss', 'clean:helpers', 'watch']);
 
 
 	// Minifica JS, CSS, HTML, e sem watch
-	grunt.registerTask('prod', ['jshint:all', 'clean:build', 'copy:prod' ,'pug:prod', 'uglify:prod', 'ngAnnotate:dev', 'less:dev', 'cssmin' ,'includeSource:prod',
+	grunt.registerTask('prod', ['jshint:all', 'clean:build', 'copy:prod' ,'pug:prod', 'ngAnnotate:dev', 'uglify:prod', 'babel:dev', 'less:dev', 'cssmin' ,'includeSource:prod',
 		'notify:prod', 'postcss', 'clean:helpers']);
 
 	// Gera a release com tudo minificado e implanta no serviço wedeploy.io (somente aos usuários que tenham o acesso liberado no serviço).
-	grunt.registerTask('deploy', ['jshint:all', 'clean:build', 'copy:prod' ,'pug:prod', 'uglify:prod', 'ngAnnotate:dev', 'less:dev', 'cssmin' ,'includeSource:prod',
+	grunt.registerTask('deploy', ['jshint:all', 'clean:build', 'copy:prod' ,'pug:prod', 'ngAnnotate:dev', 'uglify:prod', 'babel:dev', 'less:dev', 'cssmin' ,'includeSource:prod',
 		'notify:prod', 'postcss', 'clean:helpers', 'copy:deploy', 'shell:deploy']);
 
 };

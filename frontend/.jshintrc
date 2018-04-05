@@ -24,7 +24,7 @@
   "node" : true,
 
   // Allow ES6.
-  "esnext": true,
+  "esversion":6,
 
   // Force all variable names to use either camelCase style or UPPER_CASE
   // with underscores.

@@ -19,9 +19,10 @@ var ListagemCarrinho = function(livrosService, alertaUtils, tooltipUtils) {
 	listagemCarrinho.getValorTotalCompra = function() {
 
 		var total = 0;
-		for (var i = listagemCarrinho.livros.length - 1; i >= 0; i--) {
-			total = total + listagemCarrinho.livros[i].valor;
-		}
+		
+		listagemCarrinho.livros.forEach(function(livro) {
+			total = total + livro.valor;
+		});
 		return total;
 	};
 

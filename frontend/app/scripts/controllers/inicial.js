@@ -16,6 +16,14 @@ var Inicial = function(livrosService, tooltipUtils, $location) {
 		$('#filtroLivros').focus();
 	};
 
+	inicial.teste = function() {
+
+		let minhaVar = 'teste';
+		var teste = [1, 2, 3].map(n => n * 2);
+		console.log(minhaVar);
+		console.log(teste);
+	};
+
 
 	inicial.visualizarLivro = function(ISBN) {
 
