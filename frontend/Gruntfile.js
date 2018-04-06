@@ -325,9 +325,10 @@ module.exports = function(grunt){
 	// Executa somente o babel para fins de teste.
 	grunt.registerTask('es', ['babel:dist']); 
 
+	grunt.registerTask('testes', ['jshint:all', 'clean:build', 'ngAnnotate:dev', 'babel:dist']);
+
 	grunt.registerTask('default', ['jshint:all', 'clean:build', 'copy:dev' ,'pug:dev', 'uglify:dev', 'ngAnnotate:dev', 'less:dev', 'cssmin' ,'includeSource:dev',
 		'notify:dev', 'postcss', 'clean:helpers', 'watch']);
-
 
 	// Minifica JS, CSS, HTML, e sem watch
 	grunt.registerTask('prod', ['jshint:all', 'clean:build', 'copy:prod' ,'pug:prod', 'uglify:prod', 'ngAnnotate:dev', 'less:dev', 'cssmin' ,'includeSource:prod',
