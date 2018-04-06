@@ -269,6 +269,17 @@ module.exports = function(grunt){
 			}
 		},
 
+		babel: {
+			options: {
+				sourceMap: true
+			},
+			dist: {
+				files: {
+			  	'../dist/app.js': 'app/scripts/app.js'
+				}
+			}
+		},
+
 		uglify:{
 			dev: {
 				options: {
@@ -310,6 +321,9 @@ module.exports = function(grunt){
 
 		}
 	});
+	
+	// Executa somente o babel para fins de teste.
+	grunt.registerTask('es', ['babel:dist']); 
 
 	grunt.registerTask('default', ['jshint:all', 'clean:build', 'copy:dev' ,'pug:dev', 'uglify:dev', 'ngAnnotate:dev', 'less:dev', 'cssmin' ,'includeSource:dev',
 		'notify:dev', 'postcss', 'clean:helpers', 'watch']);

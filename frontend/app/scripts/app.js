@@ -24,6 +24,11 @@ livraria.run(function($rootScope, minhaContaService, facebookService) {
 		show: false
 	};
 
+	var teste =function(teste='2') {
+		console.log(teste);
+	};
+	teste();
+
 	$rootScope.$on('$routeChangeSuccess', function(event, current) {
 		
 		$rootScope.menu = current.$$route && current.$$route.controller ? current.$$route.controller.menu : '';
