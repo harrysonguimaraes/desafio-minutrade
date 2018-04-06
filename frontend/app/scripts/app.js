@@ -26,6 +26,8 @@ livraria.run(function($rootScope, minhaContaService, facebookService) {
 
 	var teste =function(teste='2') {
 		console.log(teste);
+		let anotherTeste = 2;
+		console.log(anotherTeste);
 	};
 	teste();
 

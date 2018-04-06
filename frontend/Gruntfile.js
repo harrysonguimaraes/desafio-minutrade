@@ -26,7 +26,7 @@ module.exports = function(grunt){
 			// Espera por mudanças nos arquivos .js e realiza as verificações e otimizações de javascript.
 			js: {
 				files: ['app/scripts/**/*.js'],
-				tasks: ['jshint:all', 'ngAnnotate:dev', 'uglify:dev', 'includeSource:dev'],
+				tasks: ['jshint:all', 'babel:dist', 'ngAnnotate:dev', 'uglify:dev', 'includeSource:dev'],
 				options: {
 					spawn: false,
 					livereload: true
@@ -274,9 +274,15 @@ module.exports = function(grunt){
 				sourceMap: true
 			},
 			dist: {
-				files: {
-			  	'../dist/app.js': 'app/scripts/app.js'
-				}
+				files: [
+					{
+						cwd: 'app/scripts',
+						src: ['**/*.js'],
+						dest: '<%= globalConfig.dev %>/js',
+						expand: true,
+						ext: '.js'
+					}
+				]
 			}
 		},
 
@@ -291,7 +297,7 @@ module.exports = function(grunt){
 				},
 				files: [
 					{
-						cwd: 'app/scripts',
+						cwd: '<%= globalConfig.dev %>/js',
 						src: ['**/*.js'],
 						dest: '<%= globalConfig.dev %>/js',
 						expand: true,
@@ -327,7 +333,7 @@ module.exports = function(grunt){
 
 	grunt.registerTask('testes', ['jshint:all', 'clean:build', 'ngAnnotate:dev', 'babel:dist']);
 
-	grunt.registerTask('default', ['jshint:all', 'clean:build', 'copy:dev' ,'pug:dev', 'uglify:dev', 'ngAnnotate:dev', 'less:dev', 'cssmin' ,'includeSource:dev',
+	grunt.registerTask('default', ['jshint:all', 'clean:build', 'copy:dev' ,'pug:dev', 'babel:dist', 'uglify:dev', 'ngAnnotate:dev', 'less:dev', 'cssmin' ,'includeSource:dev',
 		'notify:dev', 'postcss', 'clean:helpers', 'watch']);
 
 	// Minifica JS, CSS, HTML, e sem watch
